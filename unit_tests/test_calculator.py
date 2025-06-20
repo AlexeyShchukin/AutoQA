@@ -1,4 +1,4 @@
-from lesson1.calculator import Calculator
+from unit_tests.calculator import Calculator
 
 import pytest
 
