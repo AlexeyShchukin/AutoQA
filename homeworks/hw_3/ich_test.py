@@ -52,12 +52,13 @@ def test_lang_switcher(driver):
 def test_phone_icon(driver):
     element = driver.find_element(
         By.CSS_SELECTOR,
-        "#rec717843722 > div > div > div.t396__elem.tn-elem.tn-elem__7178437221710153310161 > a"
+        "img[imgfield='tn_img_1710153310161']"
     )
     element.click()
+    sleep(2)
     res = driver.find_element(
         By.CSS_SELECTOR,
-        '#rec767956167 > div > div > div.t396__elem.tn-elem.tn-elem__7679561671711363912027 > div'
+        'div[class="t396__elem tn-elem tn-elem__7679561671711363912027"]'
     )
     assert res.text == "Если вы не дозвонились, заполните форму на сайте. Мы свяжемся с вами"
     assert res.is_displayed()
