@@ -19,15 +19,10 @@ def driver():
 
 
 def test_check_button(driver):
-    element = driver.find_element(By.CSS_SELECTOR,  "input[fdprocessedid='zkp0bq']")
+    element = driver.find_element(By.ID, "newButtonName")
     element.click()
     element.send_keys("ITCH")
-    button = driver.find_element(By.CLASS_NAME, "btn btn-primary")
+    button = driver.find_element(By.ID, "updatingButton")
     button.click()
     wait = WebDriverWait(driver, 10)
-    wait.until(EC.text_to_be_present_in_element(By.CSS_SELECTOR,  "input[fdprocessedid='zkp0bq']"), "ITCH")
-
-
-
-
-
+    wait.until(EC.text_to_be_present_in_element((By.ID, "updatingButton"), "ITCH"))
