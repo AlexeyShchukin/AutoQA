@@ -25,4 +25,4 @@ def test_check_button(driver):
     button = driver.find_element(By.ID, "updatingButton")
     button.click()
     wait = WebDriverWait(driver, 10)
-    wait.until(EC.text_to_be_present_in_element((By.ID, "updatingButton"), "ITCH"))
+    assert wait.until(EC.text_to_be_present_in_element((By.ID, "updatingButton"), "ITCH"))
