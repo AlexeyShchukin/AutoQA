@@ -2,22 +2,37 @@ from page_object_model.base_test import BaseTest
 
 
 class TestCart(BaseTest):
-    # def test_backpack_cost(self):
-    # 1. Login with valid data
-    # self.login_page.success_login("standard_user", "secret_sauce")
+    def test_backpack_cost(self):
+        self.login_page.login("standard_user", "secret_sauce")
 
-    # 2. Remember the cost of the item "Backpack"
-    # backpack_price = self.inventory_page.get_item_price("Sauce Labs Backpack")
+        backpack_nth_child_number = 1
+        bike_light_nth_child_number = 2
+        bolt_t_short_nth_child_number = 3
 
-    # 3. Add item "Backpack" to the cart
-    # self.inventory_page.add_item_to_cart("Sauce Labs Backpack")
+        backpack_price = self.inventory_page.get_price_per_item(backpack_nth_child_number)
+        bike_light_price = self.inventory_page.get_price_per_item(bike_light_nth_child_number)
+        bolt_t_short_price = self.inventory_page.get_price_per_item(bolt_t_short_nth_child_number)
 
-    # 4. Click on the cart button
-    # self.inventory_page.go_to_cart()
+        nth_child_item_numbers = [
+            backpack_nth_child_number,
+            bike_light_nth_child_number,
+            bolt_t_short_nth_child_number
+        ]
 
-    # 5. Check that the cost of the item in the cart equals to the cost of the item on the Inventory page
-    # cart_price = self.cart_page.get_cart_item_price("Sauce Labs Backpack")
-    # assert backpack_price == cart_price, "Цена товара в корзине не совпадает с ценой на странице инвентаря."
+        self.inventory_page.add_items_to_cart(nth_child_item_numbers)
+        self.inventory_page.click_cart_button()
+
+        cart_backpack_nth_child_num = 3
+        cart_bolt_t_short_nth_child_num = 4
+        cart_bike_light_nth_child_num = 5
+
+        cart_backpack_price = self.cart_page.get_cart_item_price(cart_backpack_nth_child_num)
+        cart_bike_light_price = self.cart_page.get_cart_item_price(cart_bolt_t_short_nth_child_num)
+        cart_bolt_t_short_price = self.cart_page.get_cart_item_price(cart_bike_light_nth_child_num)
+
+        assert backpack_price == cart_backpack_price, "Цена товара в корзине не совпадает с ценой на странице инвентаря."
+        assert bike_light_price == cart_bike_light_price, "Цена товара в корзине не совпадает с ценой на странице инвентаря."
+        assert bolt_t_short_price == cart_bolt_t_short_price, "Цена товара в корзине не совпадает с ценой на странице инвентаря."
 
     def test_total_price(self):
         self.login_page.login("standard_user", "secret_sauce")

@@ -8,9 +8,9 @@ class CartPage:
         self.driver = driver
         self.wait = WebDriverWait(driver, 10)
 
-    def get_cart_item_price(self, item_name):
-        item_xpath = f"//div[text()='{item_name}']/ancestor::div[@class='cart_item']//div[@class='inventory_item_price']"
-        return self.wait.until(EC.presence_of_element_located((By.XPATH, item_xpath))).text
+    # def get_cart_item_price(self, item_name):
+    #     item_xpath = f"//div[text()='{item_name}']/ancestor::div[@class='cart_item']//div[@class='inventory_item_price']"
+    #     return self.wait.until(EC.presence_of_element_located((By.XPATH, item_xpath))).text
 
     def remove_item_from_cart(self, item_name):
         button_xpath = f"//div[text()='{item_name}']/ancestor::div[@class='cart_item']//button"
@@ -18,3 +18,10 @@ class CartPage:
 
     def click_checkout(self):
         self.wait.until(EC.element_to_be_clickable((By.ID, "checkout"))).click()
+
+    def get_cart_item_price(self, number):
+        return self.wait.until(
+            EC.visibility_of_element_located((
+                By.CSS_SELECTOR, f".cart_item:nth-child({number}) .inventory_item_price"
+            ))
+        ).text

@@ -52,7 +52,7 @@ class InventoryPage:
     def add_items_to_cart(self, nums: list[int]):
         for num in nums:
             self.click_add_to_cart_button_per_item(num)
-        
+
     def _get_cart_button(self):
         return self.wait.until(
             EC.visibility_of_element_located((
@@ -63,3 +63,11 @@ class InventoryPage:
     def click_cart_button(self):
         button = self._get_cart_button()
         button.click()
+
+    def get_price_per_item(self, number):
+        return self.wait.until(
+            EC.visibility_of_element_located((
+                By.CSS_SELECTOR, f".inventory_item:nth-child({number}) .inventory_item_price"
+            ))
+        ).text
+
