@@ -1,4 +1,4 @@
-from page_object_model.tests.base_test import BaseTest
+from page_object_model.base_test import BaseTest
 
 
 class TestLogin(BaseTest):

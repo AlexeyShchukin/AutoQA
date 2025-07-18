@@ -32,10 +32,10 @@ class CheckoutFirstPage:
         postcode_field.clear()
         postcode_field.send_keys(postcode)
 
-    def enter_all_data(self, first_name, last_name, postcode):
+    def fill_checkout_form(self, first_name, last_name, postcode):
         self.enter_first_name(first_name)
         self.enter_last_name(last_name)
         self.enter_postcode_field(postcode)
 
-    def press_continue(self):
+    def click_continue(self):
         self.wait.until(EC.element_to_be_clickable((By.ID, "continue"))).click()

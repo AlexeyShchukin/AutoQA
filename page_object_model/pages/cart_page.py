@@ -16,5 +16,5 @@ class CartPage:
         button_xpath = f"//div[text()='{item_name}']/ancestor::div[@class='cart_item']//button"
         self.wait.until(EC.element_to_be_clickable((By.XPATH, button_xpath))).click()
 
-    def proceed_to_checkout(self):
+    def click_checkout(self):
         self.wait.until(EC.element_to_be_clickable((By.ID, "checkout"))).click()

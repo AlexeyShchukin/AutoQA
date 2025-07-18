@@ -37,7 +37,7 @@ class LoginPage:
     def error_message(self):
         return self.wait.until(EC.presence_of_element_located((By.CLASS_NAME, "error-message-container")))
 
-    def success_login(self, username, password):
+    def login(self, username, password):
         self.enter_username(username)
         self.enter_password(password)
         self.click_on_login_button()

@@ -49,6 +49,10 @@ class InventoryPage:
         button = self._get_button_per_item(number)
         button.click()
 
+    def add_items_to_cart(self, nums: list[int]):
+        for num in nums:
+            self.click_add_to_cart_button_per_item(num)
+        
     def _get_cart_button(self):
         return self.wait.until(
             EC.visibility_of_element_located((
